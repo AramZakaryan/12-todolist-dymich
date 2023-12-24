@@ -15,17 +15,17 @@ const rootReducer = combineReducers({
 
 const initialGlobalState = {
         todolists: [
-            {id: "todolistId1", todolistTitle: "What to learn", filterCond: "all"},
-            {id: "todolistId2", todolistTitle: "What to buy", filterCond: "all"}
+            {id: "todolistId1", todolistTitle: "What to learn!!!", filterCond: "all"},
+            {id: "todolistId2", todolistTitle: "What to buy!!!", filterCond: "all"}
         ],
         tasks: {
             ["todolistId1"]: [
-                {id: v1(), title: "HTML&CSS", isDone: true},
-                {id: v1(), title: "JS", isDone: false}
+                {id: v1(), title: "HTML&CSS!!!", isDone: true},
+                {id: v1(), title: "JS!!!", isDone: false}
             ],
             ["todolistId2"]: [
-                {id: v1(), title: "Milk", isDone: false},
-                {id: v1(), title: "React Book", isDone: true}
+                {id: v1(), title: "Milk!!!", isDone: false},
+                {id: v1(), title: "React Book!!!", isDone: true}
             ]
         }
     }
@@ -34,5 +34,9 @@ const initialGlobalState = {
 export const storeForStory = legacy_createStore(rootReducer, initialGlobalState as roofReducerType)
 
 export const ReduxStoreProviderDecorator = (storyFn: any) => {
-    return <Provider store={storeForStory}>{storyFn()}</Provider>
+    return (
+        <Provider store={storeForStory}>
+            {storyFn()}
+        </Provider>
+    )
 }
