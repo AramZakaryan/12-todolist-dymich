@@ -3,7 +3,7 @@ import {store} from "../state/store";
 import {v1} from "uuid";
 import {todolistsReducer} from "../state/todolistsReduser";
 import {tasksReducer} from "../state/tasksReduser";
-import {combineReducers, createStore} from "redux";
+import {combineReducers, legacy_createStore} from "redux";
 
 export type roofReducerType = ReturnType<typeof rootReducer>
 
@@ -31,8 +31,8 @@ const initialGlobalState = {
     }
 ;
 
-export const storeForStory = createStore(rootReducer, initialGlobalState as roofReducerType)
+export const storeForStory = legacy_createStore(rootReducer, initialGlobalState as roofReducerType)
 
 export const ReduxStoreProviderDecorator = (storyFn: any) => {
-    return <Provider store={store}>{storyFn()}</Provider>
+    return <Provider store={storeForStory}>{storyFn()}</Provider>
 }
